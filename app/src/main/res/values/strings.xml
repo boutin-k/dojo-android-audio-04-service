@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">MediaPlayer</string>
+    <string name="play">PLAY</string>
+    <string name="pause">PAUSE</string>
+    <string name="stop">STOP</string>
+    <string name="song">http://images.innoveduc.fr/android/Green%20Day%20-%20Revolution.mp3</string>
+    <string name="song_title">Green Day</string>
+    <string name="song_description">Revolution Radio</string>
+</resources>
