@@ -10,7 +10,6 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.SeekBar;
 
@@ -47,8 +46,9 @@ public class MainActivity extends AppCompatActivity
   }
 
   /**
-   *
-   * @param savedInstanceState
+   * Called when the activity is starting.
+   * @param savedInstanceState Bundle: If the activity is being re-initialized after previously
+   * being shut down then this Bundle contains the data it most recently supplied in onSaveInstanceState(Bundle).
    */
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -93,7 +93,9 @@ public class MainActivity extends AppCompatActivity
   }
 
   /**
-   *
+   * Called after onRestoreInstanceState(Bundle), onRestart(), or onPause(), for your activity
+   * to start interacting with the user. This is a good place to begin animations,
+   * open exclusive-access devices (such as the camera), etc.
    */
   @Override
   protected void onResume() {
@@ -107,7 +109,8 @@ public class MainActivity extends AppCompatActivity
   }
 
   /**
-   *
+   * Called as part of the activity lifecycle when an activity is going into the background,
+   * but has not (yet) been killed. The counterpart to onResume().
    */
   @Override
   protected void onPause() {
@@ -116,14 +119,18 @@ public class MainActivity extends AppCompatActivity
   }
 
   /**
-   *
+   * Perform any final cleanup before an activity is destroyed. This can happen either because
+   * the activity is finishing (someone called finish() on it), or because the system is
+   * temporarily destroying this instance of the activity to save space.
+   * You can distinguish between these two scenarios with the isFinishing() method.
    */
   @Override
   protected void onDestroy() {
     super.onDestroy();
+    // Release the service
     unbindService(this);
     mBound = false;
-
+    // Release the notification
     if (null != mNotification)
       mNotification.unregister();
   }
@@ -133,8 +140,8 @@ public class MainActivity extends AppCompatActivity
   // --------------------------------------------------------------------------
 
   /**
-   *
-   * @return
+   * Get the validity of mediaPlayer instance
+   * @return boolean: Returns the validity of th WildPlayer
    */
   private boolean isPlayerReady() {
     return mBound
@@ -143,8 +150,8 @@ public class MainActivity extends AppCompatActivity
   }
 
   /**
-   *
-   * @return
+   * Return the instance of the WildPlayer stored in the service
+   * @return WildPlayer: The instance of the WildPlayer
    */
   private WildPlayer getPlayer() {
     return isPlayerReady() ? mService.getPlayer() : null;
@@ -155,9 +162,10 @@ public class MainActivity extends AppCompatActivity
   // --------------------------------------------------------------------------
 
   /**
-   *
-   * @param className
-   * @param service
+   * Called when a connection to the Service has been established, with the IBinder of the
+   * communication channel to the Service.
+   * @param className ComponentName: The concrete component name of the service that has been connected.
+   * @param service IBinder: The IBinder of the Service's communication channel, which you can now make calls on.
    */
   @Override
   public void onServiceConnected(ComponentName className, IBinder service) {
@@ -181,11 +189,12 @@ public class MainActivity extends AppCompatActivity
   }
 
   /**
-   *
-   * @param arg0
+   * Called when a connection to the Service has been lost. This typically happens when the
+   * process hosting the service has crashed or been killed.
+   * @param name ComponentName: The concrete component name of the service whose connection has been lost.
    */
   @Override
-  public void onServiceDisconnected(ComponentName arg0) {
+  public void onServiceDisconnected(ComponentName name) {
     mBound = false;
   }
 

@@ -17,9 +17,9 @@ import fr.wildcodeschool.mediaplayer.R;
 
 @SuppressWarnings("unused")
 public class MediaNotification {
-  public static final String ACTION_PLAY  = "Play";
-  public static final String ACTION_PAUSE = "Pause";
-  public static final String ACTION_STOP  = "Stop";
+  static final String ACTION_PLAY             = "Play";
+  static final String ACTION_PAUSE            = "Pause";
+  static final String ACTION_STOP             = "Stop";
 
   private static final String CHANNEL_ID      = "fr.wildcodeschool.mediaplayer";
   private static final String CHANNEL_NAME    = "Audio controller";

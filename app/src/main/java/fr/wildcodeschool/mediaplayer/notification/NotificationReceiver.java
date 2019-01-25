@@ -11,9 +11,9 @@ import static fr.wildcodeschool.mediaplayer.notification.MediaNotification.*;
 
 public class NotificationReceiver extends BroadcastReceiver {
   /**
-   *
-   * @param ctx
-   * @param intent
+   * This method is called when the BroadcastReceiver is receiving an Intent broadcast.
+   * @param ctx Context: The Context in which the receiver is running.
+   * @param intent Intent: The Intent being received.
    */
   @Override
   public void onReceive(Context ctx, Intent intent)
