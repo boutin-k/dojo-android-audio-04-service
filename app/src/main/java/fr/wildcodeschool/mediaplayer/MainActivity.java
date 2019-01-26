@@ -133,6 +133,8 @@ public class MainActivity extends AppCompatActivity
     // Release the notification
     if (null != mNotification)
       mNotification.unregister();
+    // Disable the seekbar handler
+    mSeekBarHandler.removeCallbacks(mSeekBarThread);
   }
 
   // --------------------------------------------------------------------------
