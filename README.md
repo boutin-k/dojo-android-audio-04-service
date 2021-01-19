@@ -24,3 +24,6 @@ Nous pouvons résoudre ce problème en utilisant un [Service](https://developer.
 * [Using MediaPlayer in a service](https://developer.android.com/guide/topics/media/mediaplayer)
 * [Android Services tutorials](http://www.vogella.com/tutorials/AndroidServices/article.html)
 * [Service](https://developer.android.com/reference/android/app/Service)
+
+## TD suivant
+* [Fragment](https://github.com/boutin-k/dojo-android-audio-05-fragment)
